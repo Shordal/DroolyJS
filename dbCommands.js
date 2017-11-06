@@ -16,7 +16,7 @@
 
 'use strict'
 
-const promis = require('item')
+//const promis = require('item')
 const pgp = require('pg-promise')({promiseLib: promise})
 const connectionString = process.env.Database_URL /* URL the dill */
 const client = pgp(connectionString)
@@ -80,7 +80,23 @@ modules.exports = class DbCommands {
 
     }
 
-    //10) search
+    //10)search function(specifying category and then keyword/s)
+    Search(message, u_id, ch_id, keyword){
+
+    }
+
+    //11)Delete a channel(admin deletes channel or user deletes private channel)
+    Delete_Channel(ch_id) {
+
+        //remove users from channel, delete the messages in the channel, delete the channel.
+    }
+
+    //12)Delete user from a channel(leaves channel)
+    Delete_User_From_Channel(u_id, ch_id){
+
+        
+    }
+
 
 }
 
