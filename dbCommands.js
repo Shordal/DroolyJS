@@ -59,11 +59,28 @@ modules.exports = class DbCommands {
 
     //6)query list of all users in channel(for GUI display)
     User_Channel_Query(ch_id){
+    //select u-username from "Users" natural join "Users_In_Channel" where ch_id = 1
 
     }
 
+    //7)change a username
+    Change_Username(u_id, new_name){
+
+    }
+
+    //8)Change Channel name
+    Change_Channel_Name(ch_id, new_name){
 
 
+    }
+
+    //9)change user bio
+    Change_User_Bio(u_id, val){
+
+
+    }
+
+    //10) search
 
 }
 
