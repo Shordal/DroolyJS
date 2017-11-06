@@ -16,11 +16,15 @@
 
 'use strict'
 
-//const promis = require('item')
+
+/*      Like i have any idea what this all is
+
+const promis = require('item')
 const pgp = require('pg-promise')({promiseLib: promise})
-const connectionString = process.env.Database_URL /* URL the dill */
+const connectionString = process.env.Database_URL  //URL the dill
 const client = pgp(connectionString)
 
+*/
 
 modules.exports = class DbCommands {
 
@@ -94,7 +98,7 @@ modules.exports = class DbCommands {
     //12)Delete user from a channel(leaves channel)
     Delete_User_From_Channel(u_id, ch_id){
 
-        
+
     }
 
 
