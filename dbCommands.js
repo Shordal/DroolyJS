@@ -62,21 +62,13 @@ modules.exports = class DBCommands {
 
 
     //1) insert a New User record (registers with website)
-     /*
-    @param {object} val //val contains email, password, username, firstname, and last name
-    @returns {Promise} resloves the confirm then successfully inserts with the username
-    u_id, u_email, u_password, u_username, u_firstname, u_lastname
-    */
-    insert_User(val) {
+    insert_User(u_id, u_email, u_password, u_username, u_firstname, u_lastname) {
 
         return new Promise((resolve, reject) => {
-            let u_id = val.id
-            let u_email = val.email
-            let u_password = val.password
-            let u_username = val.username
-            let u_firstname = val.firstname
-            let u_lastname = val.lastname
-
+            let command = val.command
+            let username = val.username
+            let password = val.password
+            let newItem = val.newItem
 
             if (command === 'register') {
             client
