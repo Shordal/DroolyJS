@@ -62,7 +62,58 @@ modules.exports = class DBCommands {
 
 
     //1) insert a New User record (registers with website)
-    insert_User(u_id, u_email, u_password, u_username, u_firstname, u_lastname) {
+     /*
+    @param {object} val //val contains email, password, username, firstname, and last name
+    @returns {Promise} resloves the confirm then successfully inserts with the username
+    u_id, u_email, u_password, u_username, u_firstname, u_lastname
+    */
+    insert_User(val) {
+
+        return new Promise((resolve, reject) => {
+            let u_id = val.id
+            let u_email = val.email
+            let u_password = val.password
+            let u_username = val.username
+            let u_firstname = val.firstname
+            let u_lastname = val.lastname
+
+
+            if (command === 'register') {
+            client
+                .any(`INSERT INTO "public"."${userTable}"("username","password") VALUES('${username}', '${password}') returning username`)
+                .then(data => {
+                resolve("successful insert", data)
+        })
+        .catch(error => {
+                reject(error)
+            })
+        } else if (command === 'newItem') {
+            console.log("creating new item: ", newItem)
+            client
+                .any(`INSERT INTO "public"."${listTable}" ("username", "foodname") VALUES('${username}','${newItem}') RETURNING ('username','foodname','qty/weight');`)
+                .then(data => {
+                resolve(data)
+            })
+        .catch(error => {
+                console.error(error)
+            reject(error)
+        })
+        } else if (command === 'addFood') {
+            // Creating a new item in the foods table if there's any issues.
+            console.log("creating new item in foods table: ", newItem)
+            client
+                .any(`INSERT INTO "public"."${foodTable}" ("foodname") VALUES ('${newItem}') RETURNING "foodname", "category", "type", "expiration", "suggestedStorage";`)
+                .then(data => {
+                resolve(data)
+            })
+        .catch(error => {
+                reject(error)
+            })
+        }
+    })
+    }
+
+
 
     }
 
