@@ -42,12 +42,23 @@ Get_User_In_channel();
 
 const promis = require('bluebird')
 const pgp = require('pg-promise')({promiseLib: promise})
-const connectionString = process.env.Database_URL  || 'ostgres://73.206.166.29:5432/CodeChat'
+const connectionString = process.env.Database_URL  || 'postgres://73.206.166.29:5432/CodeChat'
 const client = pgp(connectionString)
 
 
 
-modules.exports = class DbCommands {
+modules.exports = class DBCommands {
+
+    connectBD() {
+        cleint.connect((err) = > {
+            if(err) {
+                console.error('connection error', err.stack)
+            } else {
+                console.log('Connected to Postgres')
+        }
+    })
+    }
+
 
 
     //1) insert a New User record (registers with website)
@@ -129,12 +140,3 @@ modules.exports = class DbCommands {
 }
 
 
-    connectBD() {
-        cleint.connect((err) = > {
-            if(err) {
-                console.error('connection error', err.stack)
-            } else {
-                console.log('Connected to Postgres')
-        }
-    })
-    }
