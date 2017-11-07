@@ -16,15 +16,36 @@
 
 'use strict'
 
+/*----------------test area below------------------------------*/
 
-/*      Like i have any idea what this all is
+
+var Pool = require('pg').Pool;
+var config = {
+    host: ,
+    user: '',
+    password: '',  //information
+    database: ''
+}
+
+var pool = new Pool(config);
+
+async function Get_User_In_channel(){
+
+    var response = await pool.query( "select * from ch_id" );
+    console.log(response.rows);
+}
+
+Get_User_In_channel();
+
+/*----------------test area above------------------------------*/
+
 
 const promis = require('item')
 const pgp = require('pg-promise')({promiseLib: promise})
 const connectionString = process.env.Database_URL  //URL the dill
 const client = pgp(connectionString)
 
-*/
+
 
 modules.exports = class DbCommands {
 
@@ -103,23 +124,6 @@ modules.exports = class DbCommands {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     connectBD() {
