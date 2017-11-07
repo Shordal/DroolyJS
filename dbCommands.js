@@ -16,7 +16,7 @@
 
 'use strict'
 
-/*----------------test area below------------------------------*/
+/*----------------test area below------------------------------*//*
 
 
 var Pool = require('pg').Pool;
@@ -37,12 +37,12 @@ async function Get_User_In_channel(){
 
 Get_User_In_channel();
 
-/*----------------test area above------------------------------*/
+*//*----------------test area above------------------------------*/
 
 
-const promis = require('item')
+const promis = require('bluebird')
 const pgp = require('pg-promise')({promiseLib: promise})
-const connectionString = process.env.Database_URL  //URL the dill
+const connectionString = process.env.Database_URL  || 'ostgres://73.206.166.29:5432/CodeChat'
 const client = pgp(connectionString)
 
 
@@ -69,6 +69,9 @@ modules.exports = class DbCommands {
     //3)insert a channel record when a channel is created
     //ch_id = channel id, type = language used in channel
     insert_channel(ch_id, type){
+        return new Promise((reslove, reject) => {
+
+        })
 
     }
 
