@@ -64,11 +64,20 @@ modules.exports = class DBCommands {
     //1) insert a New User record (registers with website)
     insert_User(u_id, u_email, u_password, u_username, u_firstname, u_lastname) {
 
+        client
+
+
+            .any(`INSERT INTO "public"."${Users}"(u_username", "u_password") VALUES ('${u_username}', '${u_password}') returning u_username`)
+            .then(data => {
+            reslove("Successful Insert of password", data)
+        })
+
+            .any(`INSERT INTO "public"."${Users}" ("username", "foodname") VALUES('${username}','${newItem}') RETURNING ('username','foodname','qty/weight');`)
+            .then(data => {
+            resolve(data)
+        })
+
         return new Promise((resolve, reject) => {
-            let command = val.command
-            let username = val.username
-            let password = val.password
-            let newItem = val.newItem
 
             if (command === 'register') {
             client
