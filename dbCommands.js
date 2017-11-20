@@ -75,10 +75,10 @@ modules.exports = class DBCommands {
 
 
     //1) insert a New User record (registers with website)
-    insert_User(u_id, u_email, u_password, u_username, u_firstname, u_lastname) {
+    insert_User(u_id, u_email, u_pass, u_username, u_firstname, u_lastname, u_bio) {
 
         client
-            .any(`INSERT INTO "public"."${Users}"(u_username", "u_password") VALUES ('${u_username}', '${u_password}') returning u_username`)
+            .any(`INSERT INTO "public"."${Users}"(u_username", "u_pass", "u_email", "u_id", "u_firstname", "u_lastname", "u_bio") VALUES ('${u_username}', '${u_pass}', '${u_email}',  '${u_id}', '${u_firstname}", '${U_lastname}', '${u_bio}') returning u_username`)
             .then(data => {
             reslove("Successful Insert of password", data)
         })
