@@ -49,6 +49,8 @@ const client = pgp(connectionString)
 
 modules.exports = class DBCommands {
 
+	//will connect to the database from the client variables above this ^^,
+	
     connectBD() {
         cleint.connect((err) = > {
             if(err) {
@@ -58,15 +60,24 @@ modules.exports = class DBCommands {
         }
     })
     }
-
+	
+	//disconnect from postgres database
+	
+    disconnectDB() {
+        client.end((err) => {
+            if (err) {
+                console.error('disconnection error', err.stack)
+            } else {
+                console.log('disconnected from Postgres')
+            }
+        })
+    }
 
 
     //1) insert a New User record (registers with website)
     insert_User(u_id, u_email, u_password, u_username, u_firstname, u_lastname) {
 
         client
-
-
             .any(`INSERT INTO "public"."${Users}"(u_username", "u_password") VALUES ('${u_username}', '${u_password}') returning u_username`)
             .then(data => {
             reslove("Successful Insert of password", data)
