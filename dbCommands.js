@@ -42,7 +42,7 @@ Get_User_In_channel();
 
 const promis = require('bluebird')
 const pgp = require('pg-promise')({promiseLib: promise})
-const connectionString = process.env.Database_URL  || 'postgres://73.206.166.29:5432/CodeChat'
+const connectionString = process.env.Database_URL  || 'postgres://73.206.166.29:5432/CodeChat' //need to correct address
 const client = pgp(connectionString)
 
 
