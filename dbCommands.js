@@ -83,7 +83,7 @@ modules.exports = class DBCommands {
             reslove("Successful Insert of password", data)
         })
 
-            .any(`INSERT INTO "public"."${Users}" ("username", "foodname") VALUES('${username}','${newItem}') RETURNING ('username','foodname','qty/weight');`)
+            .any(`INSERT INTO "public"."${Users}" ("username", "u_id") VALUES('${username}','${U_id}') RETURNING ('username','u_id');`)
             .then(data => {
             resolve(data)
         })
