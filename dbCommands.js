@@ -75,15 +75,15 @@ modules.exports = class DBCommands {
 
 
     //1) insert a New User record (registers with website)
-    insert_User(u_id, u_email, u_pass, u_username, u_firstname, u_lastname, u_bio) {
+    insert_New_User(u_id, u_email, u_pass, u_username, u_firstname, u_lastname, u_bio) {
 
         client
-            .any(`INSERT INTO "public"."${Users}"(u_username", "u_pass", "u_email", "u_id", "u_firstname", "u_lastname", "u_bio") VALUES ('${u_username}', '${u_pass}', '${u_email}',  '${u_id}', '${u_firstname}", '${U_lastname}', '${u_bio}') returning u_username`)
+            .any(`INSERT INTO "Users"."${Users}"(u_username", "u_pass", "u_email", "u_id", "u_firstname", "u_lastname", "u_bio") VALUES ('${u_username}', '${u_pass}', '${u_email}',  '${u_id}', '${u_firstname}", '${U_lastname}', '${u_bio}') returning u_username`)
             .then(data => {
             reslove("Successful Insert of password", data)
         })
 
-            .any(`INSERT INTO "public"."${Users}" ("username", "u_id") VALUES('${username}','${U_id}') RETURNING ('username','u_id');`)
+            .any(`INSERT INTO "Users"."${Users}" ("username", "u_id") VALUES('${username}','${U_id}') RETURNING ('username','u_id');`)
             .then(data => {
             resolve(data)
         })
@@ -92,7 +92,7 @@ modules.exports = class DBCommands {
 
             if (command === 'register') {
             client
-                .any(`INSERT INTO "public"."${userTable}"("username","password") VALUES('${username}', '${password}') returning username`)
+                .any(`INSERT INTO "Users"."${userTable}"("username","password") VALUES('${username}', '${password}') returning username`)
                 .then(data => {
                 resolve("successful insert", data)
         })
@@ -102,7 +102,7 @@ modules.exports = class DBCommands {
         } else if (command === 'newItem') {
             console.log("creating new item: ", newItem)
             client
-                .any(`INSERT INTO "public"."${listTable}" ("username", "foodname") VALUES('${username}','${newItem}') RETURNING ('username','foodname','qty/weight');`)
+                .any(`INSERT INTO "Users"."${listTable}" ("username", "foodname") VALUES('${username}','${newItem}') RETURNING ('username','foodname','qty/weight');`)
                 .then(data => {
                 resolve(data)
             })
